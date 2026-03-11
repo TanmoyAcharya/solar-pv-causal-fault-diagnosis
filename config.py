@@ -64,6 +64,11 @@ NUM_HEADS = 4
 NUM_LAYERS = 2
 DROPOUT = 0.2
 
+# ── Derived constants ─────────────────────────────────────────────────────────
+N_FEATURES = len(FEATURE_COLUMNS)   # 9
+N_CLASSES  = len(FAULT_LABELS)      # 7
+N_HEADS    = NUM_HEADS              # alias used by pipeline
+
 # ── Data generation defaults ──────────────────────────────────────────────────
 SAMPLE_INTERVAL_MIN = 15   # minutes between samples
 RANDOM_SEED = 42

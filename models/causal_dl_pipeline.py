@@ -225,7 +225,7 @@ class CausalPVDiagnosisPipeline:
             top = max(attribution, key=lambda k: abs(attribution.get(k, 0)))
             top_val = readings.get(top, 'N/A')
             top_str = f'{top_val:.2f}' if isinstance(top_val, (int, float)) else str(top_val)
-            feature_line = f"**Most influential sensor:** `{{top}}` (value: {{top_str}})"
+            feature_line = f"**Most influential sensor:** `{top}` (value: {top_str})"
         else:
             feature_line = ''
 
@@ -235,13 +235,13 @@ class CausalPVDiagnosisPipeline:
         action = FAULT_ACTIONS.get(fault_name, 'Perform general system inspection.')
 
         return (
-            f"**{{fault_name}}** detected with **{{confidence * 100:.1f}}% confidence**.\n\n"
-            f"{{feature_line}}\n\n"
-            f"**Causal pathway:** {{chain_str}}\n\n"
+            f"**{fault_name}** detected with **{confidence * 100:.1f}% confidence**.\n\n"
+            f"{feature_line}\n\n"
+            f"**Causal pathway:** {chain_str}\n\n"
             f"The causal discovery analysis (PCMCI) identified this fault pathway "
             f"directly from your PV sensor data. The Causal-Informed Neural Network "
             f"classified this fault while respecting the discovered causal structure.\n\n"
-            f"**Recommended action:** {{action}}"
+            f"**Recommended action:** {action}"
         )
 
     def save(self, path: str = 'pipeline.pkl') -> None:

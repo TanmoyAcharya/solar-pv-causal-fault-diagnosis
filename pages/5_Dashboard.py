@@ -96,7 +96,7 @@ if causal_graph is not None:
     st.markdown("---")
     st.subheader("🔗 Causal Structure")
     fig_cg = plot_causal_graph(causal_graph, physics_validation)
-st.plotly_chart(fig_cg, use_container_width=True)
+    st.plotly_chart(fig_cg, use_container_width=True)
 
 # ── Model Performance ─────────────────────────────────────────────────────────
 if pipeline is not None and pipeline.is_fitted:
@@ -126,7 +126,7 @@ report = {
 }
 if pipeline is not None and pipeline.is_fitted:
     report['metric'].extend(['Model Accuracy', 'Macro F1'])
-    report['value'].extend([f"{pipeline.eval_results['accuracy']*100:.1f}%.", f"{pipeline.eval_results['f1_macro']*100:.1f}%.".])
+    report['value'].extend([f"{pipeline.eval_results['accuracy']*100:.1f}%", f"{pipeline.eval_results['f1_macro']*100:.1f}%"])
 df_report = pd.DataFrame(report)
 csv_report = df_report.to_csv(index=False).encode()
 st.download_button("⬇️ Download Summary Report CSV", csv_report,
