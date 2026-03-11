@@ -215,9 +215,10 @@ def plot_causal_graph(G, physics_validation: list | None = None) -> go.Figure:
     )
 
     fig = go.Figure(data=edge_traces + [node_trace])
-    fig.update_layout(title="Causal Graph", showlegend=False,
-                      xaxis=dict(visible=False), yaxis=dict(visible=False),
-                      **_BASE_LAYOUT)
+    layout = dict(_BASE_LAYOUT)
+    layout['xaxis'] = dict(visible=False)
+    layout['yaxis'] = dict(visible=False)
+    fig.update_layout(title="Causal Graph", showlegend=False, **layout)
     return fig
 
 

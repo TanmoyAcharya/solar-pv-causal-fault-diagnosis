@@ -82,7 +82,7 @@ if df is not None:
         if "fault_label" in df.columns:
             counts = df["fault_label"].value_counts().sort_index()
             labels = [FAULT_LABELS.get(i, str(i)) for i in counts.index]
-            colors = [FAULT_COLORS.get(i, "#999") for i in counts.index]
+            colors = [FAULT_COLORS.get(FAULT_LABELS.get(i, str(i)), "#999") for i in counts.index]
             fig = px.pie(
                 values=counts.values,
                 names=labels,
