@@ -12,16 +12,12 @@ import pandas as pd
 from config import FEATURE_COLUMNS, KNOWN_CAUSAL_RELATIONS, MAX_LAG, ALPHA_LEVEL
 from models.causal_discovery import PVCausalDiscovery
 from utils.metrics import compute_causal_physics_validation
+from utils.theme import apply_theme
 from utils.visualization import plot_causal_graph
 
 st.set_page_config(page_title="Causal Discovery", page_icon="🔍", layout="wide")
 
-st.markdown("""
-<style>
-  .stApp { background-color: #0f0f1a; color: #e0e0ff; }
-  section[data-testid="stSidebar"] { background-color: #1a1a2e; }
-</style>
-""", unsafe_allow_html=True)
+apply_theme()
 
 st.title("🔍 Causal Discovery")
 st.markdown(

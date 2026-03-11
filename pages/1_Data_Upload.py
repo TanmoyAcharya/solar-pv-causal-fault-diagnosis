@@ -11,16 +11,12 @@ import pandas as pd
 import plotly.express as px
 
 from utils.preprocessing import validate_data, fill_missing_values
+from utils.theme import apply_theme
 from config import FEATURE_COLUMNS, FAULT_LABELS, FAULT_COLORS
 
 st.set_page_config(page_title="Data Upload", page_icon="📤", layout="wide")
 
-st.markdown("""
-<style>
-  .stApp { background-color: #0f0f1a; color: #e0e0ff; }
-  section[data-testid="stSidebar"] { background-color: #1a1a2e; }
-</style>
-""", unsafe_allow_html=True)
+apply_theme()
 
 st.title("📤 Data Upload")
 st.markdown("Upload a PV sensor CSV file or generate a synthetic dataset for exploration.")

@@ -8,6 +8,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import streamlit as st
 
+from utils.theme import apply_theme
+
 st.set_page_config(
     page_title="Solar PV Fault Diagnosis",
     page_icon="☀️",
@@ -15,33 +17,48 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ── Dark solar theme ──────────────────────────────────────────────────────────
-st.markdown("""
-<style>
-  .stApp { background-color: #0f0f1a; color: #e0e0ff; }
-  section[data-testid="stSidebar"] { background-color: #1a1a2e; }
+apply_theme("""
   .nav-card {
-    background: #1a1a2e;
-    border: 1px solid #2a2a4a;
-    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(18, 39, 62, 0.94), rgba(11, 25, 40, 0.96));
+    border: 1px solid rgba(135, 170, 205, 0.18);
+    border-radius: 16px;
     padding: 20px;
-    margin: 8px 0;
-    transition: border-color 0.2s;
+    margin: 10px 0;
+    box-shadow: 0 18px 45px rgba(2, 12, 24, 0.25);
+    transition: transform 0.2s ease, border-color 0.2s ease;
   }
-  .nav-card:hover { border-color: #f39c12; }
-  .hero-title { font-size: 2.8rem; font-weight: 800; color: #f39c12; }
-  .hero-sub { font-size: 1.1rem; color: #a0a0c0; line-height: 1.6; }
+  .nav-card:hover {
+    border-color: rgba(245, 185, 66, 0.45);
+    transform: translateY(-2px);
+  }
+  .nav-card h3 {
+    color: #f5f7fb;
+    margin-bottom: 0.45rem;
+  }
+  .nav-card p { color: #bfd0e3; }
+  .hero-title {
+    font-size: 2.9rem;
+    font-weight: 800;
+    color: #f5b942;
+    margin-bottom: 0.25rem;
+  }
+  .hero-sub {
+    font-size: 1.08rem;
+    color: #d7e3f0;
+    line-height: 1.7;
+    max-width: 70rem;
+  }
   .stat-box {
-    background: #1a1a2e;
-    border: 1px solid #2a2a4a;
-    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(17, 39, 62, 0.9), rgba(11, 25, 40, 0.95));
+    border: 1px solid rgba(135, 170, 205, 0.18);
+    border-radius: 14px;
     padding: 16px;
     text-align: center;
+    box-shadow: 0 16px 35px rgba(2, 12, 24, 0.22);
   }
-  .stat-value { font-size: 2rem; font-weight: 700; color: #f39c12; }
-  .stat-label { font-size: 0.85rem; color: #a0a0c0; }
-</style>
-""", unsafe_allow_html=True)
+  .stat-value { font-size: 2rem; font-weight: 700; color: #ffd27d; }
+  .stat-label { font-size: 0.88rem; color: #bfd0e3; }
+""")
 
 # ── Hero section ─────────────────────────────────────────────────────────────
 st.markdown('<p class="hero-title">☀️ Solar PV Causal Fault Diagnosis</p>',

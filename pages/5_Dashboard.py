@@ -9,22 +9,26 @@ import plotly.express as px
 from config import FAULT_LABELS, FAULT_COLORS, FEATURE_COLUMNS
 from utils.metrics import (compute_system_health_score, compute_energy_loss,
                             compute_causal_physics_validation)
+from utils.theme import apply_theme
 from utils.visualization import (plot_fault_timeline, plot_fault_heatmap,
                                   plot_system_health_gauge, plot_energy_loss_bars,
                                   plot_sensor_grid, plot_causal_graph)
 
 st.set_page_config(page_title="📈 Dashboard", page_icon="📈", layout="wide")
 
-st.markdown("""
-<style>
-.stApp { background-color: #0f0f1a; }
-section[data-testid="stSidebar"] { background-color: #12122a; border-right:1px solid #f39c12; }
-.kpi-card { background:#1a1a2e; border:1px solid #333; border-left:4px solid #f39c12;
-             border-radius:8px; padding:18px; text-align:center; }
-.kpi-num { font-size:2rem; font-weight:900; color:#f39c12; }
-.kpi-label { color:#aaa; font-size:0.82rem; }
-</style>
-""", unsafe_allow_html=True)
+apply_theme("""
+    .kpi-card {
+        background: linear-gradient(180deg, rgba(17, 39, 62, 0.92), rgba(11, 25, 40, 0.96));
+        border: 1px solid rgba(135, 170, 205, 0.18);
+        border-left: 4px solid #f5b942;
+        border-radius: 16px;
+        padding: 18px;
+        text-align: center;
+        box-shadow: 0 16px 35px rgba(2, 12, 24, 0.22);
+    }
+    .kpi-num { font-size: 2rem; font-weight: 900; color: #ffd27d; }
+    .kpi-label { color: #bfd0e3; font-size: 0.85rem; }
+""")
 
 st.title("📈 System Monitoring Dashboard")
 st.caption("Full analytics dashboard for Solar PV fault monitoring, energy loss estimation, and causal insights.")

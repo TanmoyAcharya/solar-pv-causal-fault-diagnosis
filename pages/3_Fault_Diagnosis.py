@@ -15,16 +15,12 @@ from config import (FEATURE_COLUMNS, FAULT_LABELS, EPOCHS, LEARNING_RATE,
                     N_FEATURES, N_CLASSES)
 from models.deep_learning import create_model, train_model, evaluate_model
 from utils.preprocessing import normalize_features, create_sequences, train_test_split_temporal
+from utils.theme import apply_theme
 from utils.visualization import plot_training_curves, plot_confusion_matrix
 
 st.set_page_config(page_title="Fault Diagnosis", page_icon="🤖", layout="wide")
 
-st.markdown("""
-<style>
-  .stApp { background-color: #0f0f1a; color: #e0e0ff; }
-  section[data-testid="stSidebar"] { background-color: #1a1a2e; }
-</style>
-""", unsafe_allow_html=True)
+apply_theme()
 
 st.title("🤖 Fault Diagnosis")
 st.markdown("Train a deep learning model to classify PV faults from sensor sequences.")

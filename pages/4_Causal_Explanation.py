@@ -11,25 +11,25 @@ import streamlit as st
 
 from config import FEATURE_COLUMNS, FAULT_LABELS, SEQ_LEN
 from models.deep_learning import predict_single, get_gradient_attribution
+from utils.theme import apply_theme
 from utils.visualization import (plot_probability_bars, plot_feature_attribution,
                                   plot_causal_chain)
 
 st.set_page_config(page_title="Causal Explanation", page_icon="💡", layout="wide")
 
-st.markdown("""
-<style>
-  .stApp { background-color: #0f0f1a; color: #e0e0ff; }
-  section[data-testid="stSidebar"] { background-color: #1a1a2e; }
-  .nl-box {
-    background: #1a1a2e;
-    border-left: 4px solid #f39c12;
-    border-radius: 6px;
-    padding: 16px 20px;
-    margin: 12px 0;
-    line-height: 1.7;
-  }
-</style>
-""", unsafe_allow_html=True)
+apply_theme("""
+    .nl-box {
+        background: linear-gradient(180deg, rgba(17, 39, 62, 0.9), rgba(11, 25, 40, 0.96));
+        border: 1px solid rgba(135, 170, 205, 0.18);
+        border-left: 4px solid #f5b942;
+        border-radius: 14px;
+        padding: 16px 20px;
+        margin: 12px 0;
+        line-height: 1.7;
+        color: #f5f7fb;
+        box-shadow: 0 16px 35px rgba(2, 12, 24, 0.22);
+    }
+""")
 
 st.title("💡 Causal Explanation")
 st.markdown(
